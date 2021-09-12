@@ -1,0 +1,6 @@
+
+#pi configuration variables
+export SD_DRIVE_LETTER=j
+export MountPath=/mnt/$SD_DRIVE_LETTER
+export MountDrive=$SD_DRIVE_LETTER:
+export WiFiCountryCode=US
