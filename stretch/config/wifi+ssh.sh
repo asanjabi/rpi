@@ -1,7 +1,8 @@
 #!/bin/bash
-set -euxo pipefail
+set -euo pipefail
 
-source ../env
+SCRIP_DIR=$(dirname "${BASH_SOURCE[0]}")
+source "$SCRIP_DIR"/../env
 
 #Setup wifi
 read -rp 'SSID: ' SSID
