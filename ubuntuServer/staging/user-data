@@ -1,0 +1,34 @@
+#cloud-config
+#More details on the wifi setup here: https://gitlab.com/Bjorn_Samuelsson/raspberry-pi-cloud-init-wifi
+
+# Enable password authentication with the SSH daemon
+ssh_pwauth: true
+hostname: pie1
+
+# On first boot, set the (default) ubuntu user's password to "ubuntu" and
+# expire user passwords
+chpasswd:
+  expire: true
+  list:
+  - ubuntu:ubuntu
+
+write_files:
+- content: |
+      network:
+        version: 2
+        wifis:
+          wlan0:
+            dhcp4: true
+            access-points:
+              "asdfasfd":
+                password: "password"
+  path: /etc/netplan/config.yaml
+
+bootcmd:
+  - 'systemctl disable systemd-networkd-wait-online.service'
+  - 'systemctl mask systemd-networkd-wait-online.service'
+
+runcmd:
+  - 'rm /etc/netplan/??-cloud-init.yaml'
+  - 'chmod go-r /etc/netplan/config.yaml'
+  - 'netplan apply'

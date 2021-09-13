@@ -1,0 +1,26 @@
+#!/bin/bash
+set -euo pipefail
+
+#pi configuration variables
+ROOT=$(realpath "$(dirname "${BASH_SOURCE[0]}")")
+
+export ROOT
+
+export SD_DRIVE_LETTER=j
+export WiFiCountryCode=US
+
+export MountPath=/mnt/$SD_DRIVE_LETTER
+export MountDrive=$SD_DRIVE_LETTER:
+
+export StagingPath=$ROOT/staging
+
+export WIFI_SSID
+export WIFI_PASSWORD
+
+
+#IoT Edge configuration variables
+export IOT_EDGE_SCOPE_ID
+export IOT_EDGE_REGISTRATION_ID
+export IOT_EDGE_SYMMETRIC_KEY
+
+set +euox pipefail
