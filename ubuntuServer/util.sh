@@ -38,7 +38,7 @@ ensureDirectory(){
 #appendYaml targetFile fileToAppend
 appendYaml(){
     echo merging $2 into $1
-    yq eval-all -i 'select(fileIndex == 0) *+ select(filename == '\""$1"\"')' $2 $1
+    yq eval-all -i 'select(fileIndex == 0) *+ select(filename == '\""$2"\"')' "$1" "$2"
 }
 
 

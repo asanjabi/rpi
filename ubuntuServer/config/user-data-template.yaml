@@ -3,13 +3,15 @@
 
 # Enable password authentication with the SSH daemon
 ssh_pwauth: true
-hostname: pie1
+hostname: $HOST_NAME
 
 # On first boot, set the (default) ubuntu user's password to "ubuntu" and
 # expire user passwords
 chpasswd:
   expire: true
   list:
+# root user name and password good idea to change
+# TODO: Replace with rsa key
   - ubuntu:ubuntu
 
 write_files:
@@ -32,3 +34,9 @@ runcmd:
   - 'rm /etc/netplan/??-cloud-init.yaml'
   - 'chmod go-r /etc/netplan/config.yaml'
   - 'netplan apply'
+#wait for connection to network
+  - /boot/firmware/waitForNetwork.sh
+#update the time
+  - sudo systemctl start systemd-timesyncd.service
+  - sudo timedatectl set-ntp true
+  - sudo systemctl restart systemd-timesyncd.service

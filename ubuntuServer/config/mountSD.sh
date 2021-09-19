@@ -1,6 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
+#TODO, check for SU
+
 SCRIP_DIR=$(dirname "${BASH_SOURCE[0]}")
 pushd "$SCRIP_DIR"
 

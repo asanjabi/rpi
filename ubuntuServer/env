@@ -16,11 +16,16 @@ export StagingPath=$ROOT/staging
 
 export WIFI_SSID
 export WIFI_PASSWORD
-
+export HOST_NAME
 
 #IoT Edge configuration variables
 export IOT_EDGE_SCOPE_ID
 export IOT_EDGE_REGISTRATION_ID
-export IOT_EDGE_SYMMETRIC_KEY
+export IOT_EDGE_DPS_SYMMETRIC_KEY
+
+if [ -f "$ROOT"/env.local ]
+then
+    source "$ROOT"/env.local
+fi
 
 set +euox pipefail

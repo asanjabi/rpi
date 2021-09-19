@@ -8,9 +8,21 @@ pushd "$SCRIP_DIR"
 source ../env
 source ../util.sh
 
-cp config.yaml $StagingPath/config.yaml
+if [ ! -f "$StagingPath"/user-data ]
+then
+    echo "Run ./config/configPi.sh first to create user-data"
+    exit
+fi
 
-appendYaml iot-data.yaml user-data
+#For now only symmetric key options
+source ./_configDpsSymmetric.sh
+
+eval "cat <<EOF
+$(cat "$CONFIG_TEMPLATE")
+EOF" > "$StagingPath"/config.toml
+
+
+appendYaml "$StagingPath"/user-data ./iotedge-user-data.yaml
 
 popd
 set +euox pipefail
