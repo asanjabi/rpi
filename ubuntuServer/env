@@ -18,6 +18,9 @@ export WIFI_SSID
 export WIFI_PASSWORD
 export HOST_NAME
 
+#Force change of user password at initial login
+export EXPIRE_PASSWORD=true
+
 #IoT Edge configuration variables
 export IOT_EDGE_SCOPE_ID
 export IOT_EDGE_REGISTRATION_ID

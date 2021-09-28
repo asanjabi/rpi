@@ -8,6 +8,7 @@ source ../env
 
 ./mountSD.sh
 cp -r "$StagingPath"/* "$MountPath"
+./umountSD.sh
 
 set +euo pipefail
 

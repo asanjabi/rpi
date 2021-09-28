@@ -8,7 +8,7 @@ hostname: $HOST_NAME
 # On first boot, set the (default) ubuntu user's password to "ubuntu" and
 # expire user passwords
 chpasswd:
-  expire: true
+  expire: $EXPIRE_PASSWORD
   list:
 # root user name and password good idea to change
 # TODO: Replace with rsa key
