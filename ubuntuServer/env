@@ -26,9 +26,9 @@ export IOT_EDGE_SCOPE_ID
 export IOT_EDGE_REGISTRATION_ID
 export IOT_EDGE_DPS_SYMMETRIC_KEY
 
-if [ -f "$ROOT"/env.local ]
+if [ -f "$ROOT"/.env.local ]
 then
-    source "$ROOT"/env.local
+    source "$ROOT"/.env.local
 fi
 
 set +euox pipefail
